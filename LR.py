@@ -76,39 +76,6 @@ ax2.text(0.02, 0.98, f'R² = {r2_humanos:.3f}\n{ecuacion_hum}',
 plt.tight_layout()
 plt.show()
 
-# --- 4. GRÁFICO COMPARATIVO EN UN SOLO EJES ---
-plt.figure(figsize=(15, 8))
-
-# Ambas regresiones en mismo gráfico
-plt.scatter(X, df['Espacios_Naturales'], color='#2E8B57', alpha=0.6, s=50, label='Naturales (datos)')
-plt.scatter(X, df['Usos_Humanos'], color='#DC143C', alpha=0.6, s=50, label='Humanos (datos)')
-
-plt.plot(X, prediccion_naturales, color='darkgreen', linewidth=3, label='Tendencia Naturales')
-plt.plot(X, prediccion_humanos, color='darkred', linewidth=3, label='Tendencia Humanos')
-
-plt.title('COMPARACIÓN DIRECTA: Tendencia de Espacios Naturales vs Usos Humanos\n(1985-2023)',
-          fontsize=16, fontweight='bold', pad=15)
-plt.xlabel('Año', fontsize=12, fontweight='bold')
-plt.ylabel('Superficie (hectáreas)', fontsize=12, fontweight='bold')
-plt.legend(fontsize=11)
-plt.grid(True, alpha=0.3)
-
-# Añadir anotaciones con las pendientes
-plt.annotate(f'Naturales: {modelo_naturales.coef_[0]:.1f} ha/año',
-             xy=(df['Year'].mean(), prediccion_naturales.mean()),
-             xytext=(20, 40), textcoords='offset points',
-             bbox=dict(boxstyle="round,pad=0.3", facecolor="#2E8B57", alpha=0.8),
-             color='white', fontweight='bold')
-
-plt.annotate(f'Humanos: {modelo_humanos.coef_[0]:.1f} ha/año',
-             xy=(df['Year'].mean(), prediccion_humanos.mean()),
-             xytext=(20, -50), textcoords='offset points',
-             bbox=dict(boxstyle="round,pad=0.3", facecolor="#DC143C", alpha=0.8),
-             color='white', fontweight='bold')
-
-plt.tight_layout()
-plt.show()
-
 # --- 5. ANÁLISIS ESTADÍSTICO DETALLADO ---
 print("\n" + "="*70)
 print("📊 ANÁLISIS ESTADÍSTICO DETALLADO")
@@ -147,4 +114,3 @@ for year in [2025, 2030, 2040]:
     hum_proy = modelo_humanos.predict([[year]])[0]
     print(f"   • {year}: Naturales = {nat_proy:.0f} ha, Humanos = {hum_proy:.0f} ha")
 
-print("="*70)
