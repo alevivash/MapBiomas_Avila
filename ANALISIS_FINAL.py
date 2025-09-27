@@ -102,7 +102,7 @@ plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x + base_l
 plt.tight_layout()
 plt.show()
 
-# --- 4. REGRESIÓN LINEAL MEJORADA ---
+# --- 4. REGRESIÓN LINEAL  ---
 # Preparar datos para regresión (evitar warnings)
 X = df['Year'].values.reshape(-1, 1)
 y_naturales = df['Naturales'].values
