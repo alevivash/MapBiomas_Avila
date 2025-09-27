@@ -71,6 +71,8 @@ plt.text(df['Year'].mean(), 50,
 plt.tight_layout()
 plt.show()
 
+##END
+
 # --- 3. GRÁFICO 2: ÁREA APILADA ---
 min_naturales = df['Naturales'].min()
 base_line_optima = min_naturales - 500
@@ -102,7 +104,9 @@ plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x + base_l
 plt.tight_layout()
 plt.show()
 
-# --- 4. REGRESIÓN LINEAL  ---
+##END
+
+# --- 4. REGRESIÓN LINEAL  (preparacion de datos)---
 # Preparar datos para regresión (evitar warnings)
 X = df['Year'].values.reshape(-1, 1)
 y_naturales = df['Naturales'].values
@@ -118,10 +122,12 @@ modelo_humanos.fit(X, y_humanos)
 prediccion_naturales = modelo_naturales.predict(X)
 prediccion_humanos = modelo_humanos.predict(X)
 
+# --- . GRÁFICO 3: GRÁFICOS DE REGRESIÓN LINEAL (Subplots) ---
+
 # Gráficos de regresión
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 8))
 
-# Gráfico 1: Espacios Naturales
+# Sub Gráfico 1: Espacios Naturales
 ax1.scatter(df['Year'], y_naturales, label='Datos observados', color='#2E8B57', alpha=0.7, s=60)
 ax1.plot(df['Year'], prediccion_naturales, color='darkgreen', linewidth=4, label='Tendencia lineal')
 ax1.set_title('REGRESIÓN LINEAL: Espacios Naturales\n(1985-2023)', fontsize=16, fontweight='bold', pad=15)
@@ -137,7 +143,7 @@ ax1.text(0.02, 0.98, f'R² = {r2_naturales:.3f}\n{ecuacion_nat}',
          bbox=dict(boxstyle='round', facecolor='white', alpha=0.8),
          fontsize=10, fontfamily='monospace')
 
-# Gráfico 2: Usos Humanos
+# Sub Gráfico 2: Usos Humanos
 ax2.scatter(df['Year'], y_humanos, label='Datos observados', color='#DC143C', alpha=0.7, s=60)
 ax2.plot(df['Year'], prediccion_humanos, color='darkred', linewidth=4, label='Tendencia lineal')
 ax2.set_title('REGRESIÓN LINEAL: Usos Humanos\n(1985-2023)', fontsize=16, fontweight='bold', pad=15)
