@@ -26,7 +26,7 @@ print(f"✅ Verificación: Desviación del área total = {variacion_total:.2f} h
 df['%_Naturales'] = (df['Naturales'] / df['Total_verificado']) * 100
 df['%_Antropogenicos'] = (df['Antropogenicos'] / df['Total_verificado']) * 100
 
-# --- 2. GRÁFICO 1: EVOLUCIÓN DE PORCENTAJES ---
+# --- 2. GRÁFICO 1: EVOLUCIÓN DE PORCENTAJES (Lineas con sombreado) ---
 plt.figure(figsize=(15, 8))
 
 # Gráfico de líneas principales
