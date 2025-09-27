@@ -74,8 +74,8 @@ plt.show()
 ##END
 
 # --- 3. GRÁFICO 2: ÁREA APILADA ---
-min_naturales = df['Naturales'].min()
-base_line_optima = min_naturales - 500
+min_naturales = df['Naturales'].min() # 500 ha desde el base_line
+base_line_optima = min_naturales - 500 # A partir se empieza a mostrar la grafica 77,620.77 ha
 
 plt.figure(figsize=(14, 8))
 
